@@ -1,9 +1,24 @@
-MAU.raw.PUSH   = +>
-MAU.raw.PULL   = <+
-MAU.raw.SHIFT  = <>
-MAU.raw.FLOW   = ~>
-MAU.raw.BREAK  = !|
-MAU.raw.SPIN   = @°
-MAU.raw.RISE   = ^+
-MAU.raw.DROP   = v-
-MAU.raw.ROOT   = 0°
+# MAU.raw · offene Vorgänge · a + b
+
+MAU = U + W
+
+BILDUNG.a = src
+BILDUNG.b = exe
+
+MAU.raw = {
+  PUSH:  +>a +>b,
+  PULL:  <+a <+b,
+  SHIFT: <>a <>b,
+  FLOW:  ~>a ~>b,
+  BREAK: !|a !|b,
+  SPIN:  @°a @°b,
+  RISE:  ^+a ^+b,
+  DROP:  v-a v-b,
+  ROOT:  0°a 0°b
+}
+
+MAU.TMP = [1,2,3,4,5,6]   # U + W
+
+MAU.KIpi = U → W
+
+MAU.Station = MAU.raw + MAU.TMP + MAU.KIpi
