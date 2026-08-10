@@ -1,88 +1,88 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<title>IKI1UC – Zentrale Station</title>
+<!-- iki1uc · index.html · MAU-MAIN · persönliches Hauptsystem -->
 
-<style>
-body { background:#000; color:#0f0; font-family:monospace; margin:0; padding:20px; }
-h1, h2 { color:#6cf; }
-.respo { background:#111; border:1px solid #333; padding:20px; margin:15px 0; }
-canvas { display:block; margin:auto; background:#111; }
-</style>
+<div id="MAU-MAIN">
+    <h1>MAU · MAIN · index.html</h1>
+    <p>Dies ist die persönliche Hauptstation des Systems.</p>
+    <p>MAU = dein MAIN. Alles läuft hier zusammen.</p>
 
-<script type="module">
-/* VISUAL-MODULE */
-import { drawON3 } from "./on3Vis.js";
-import { drawRing6 } from "./ring6.js";
-import { drawRing7 } from "./on3Ring7.js";
-import { animate9lu } from "./9luAnim.js";
-import { draw9lu3D } from "./9lu3D.js";
+    <h2>MAU · Offene Vorgänge</h2>
+    <p>MAU trägt alle nicht abgeschlossenen Prozesse.</p>
+    <p>MAU nutzt TMP360, TMPCHAIN, QI, IQQ.</p>
 
-/* ENGINE-MODULE */
-import { scanFrame } from "./on3Scanner.js";
-import { debugFrame } from "./on3Debugger.js";
-import { buildDashboard } from "./on3Dashboard.js";
+    <h2>QI · 12×360°</h2>
+    <pre id="qi-output">QI lädt…</pre>
 
-window.onload = () => {
+    <h2>IQQ · 6×360°</h2>
+    <pre id="iqq-output">IQQ lädt…</pre>
 
-    /* CANVAS */
-    const c = document.getElementById("canvas");
-    const x = c.getContext("2d");
+    <h2>GEO · Formkörper (IX)</h2>
+    <ul>
+        <li>[PUSH](ca://s?q=PUSH_Form)</li>
+        <li>[PULL](ca://s?q=PULL_Form)</li>
+        <li>[SHIFT](ca://s?q=SHIFT_Form)</li>
+        <li>[FLOW](ca://s?q=FLOW_Form)</li>
+        <li>[BREAK](ca://s?q=BREAK_Form)</li>
+        <li>[SPIN](ca://s?q=SPIN_Form)</li>
+        <li>[RISE](ca://s?q=RISE_Form)</li>
+        <li>[DROP](ca://s?q=DROP_Form)</li>
+        <li>[ROOT](ca://s?q=ROOT_Form)</li>
+    </ul>
 
-    /* VISUALISIERUNG – ALLE MODULE */
-    drawRing6(x);     // Meta-Ebene
-    drawRing7(x);     // Relativität
-    drawON3(x);       // ON3-Tunnel
-    animate9lu(x);    // 9lu-Animation
-    draw9lu3D(x);     // 9lu-3D
+    <h2>MODUL · Kernkörper (XI)</h2>
+    <p>[MODUL](ca://s?q=MODUL_Kern) trägt PORT, KIpi und das 3‑Eck‑Axiom.</p>
 
-    /* FRAME */
-    const frame = {
-        context: null,
-        repeat: 4,
-        fixable: false,
-        addr: "0x13",
-        event: "on3",
-        state: "ACTIVE"
-    };
+    <h2>6‑Achse</h2>
+    <ul>
+        <li>[PORT](ca://s?q=PORT_System)</li>
+        <li>[MAIN](ca://s?q=MAIN_System)</li>
+        <li>[KIpi](ca://s?q=KIpi_Process)</li>
+        <li>[Stationen](ca://s?q=Stationen_iki1uc)</li>
+        <li>[NEI LIBERTY](ca://s?q=NEI_LIBERTY)</li>
+        <li>[PORT IN/OUT](ca://s?q=PORT_IN_OUT)</li>
+    </ul>
 
-    const scan = scanFrame(frame);
-    const debug = debugFrame(frame);
+    <h2>TMP360 / TMPCHAIN</h2>
+    <pre id="tmp-output">TMP lädt…</pre>
 
-    const result = { scan, debug };
+    <h2>Lizenz</h2>
+    <p>📜 MIT – free to use and modify. Author credit © iki1uc muss erhalten bleiben.</p>
+</div>
 
-    /* DASHBOARD */
-    buildDashboard(result);
+<script src="OUR.js"></script>
+<script src="360.js"></script>
 
-    /* RESPO-100 */
-    document.getElementById("respo100").innerText =
-        "RESPO‑100: TOP 100 Bildung – aktiv";
+<script>
+// iki1uc · index.html · MAU-MAIN · interne Ausgabe
 
-    /* RESPO-360 */
-    document.getElementById("respo360").innerText =
-        "RESPO‑360: 360° Bildung – aktiv";
+function loadTMP() {
+    const qi = TMPCHAIN.chain("QI").join(" → ");
+    const iqq = TMPCHAIN.chain("IQQ").join(" → ");
 
-    /* NEXT-STATIONEN */
-    document.getElementById("next").innerText =
-        "Nächste Stationen: 3te, 9lu, META7, TP9 – alle Module versorgt.";
-};
+    document.getElementById("qi-output").textContent = qi;
+    document.getElementById("iqq-output").textContent = iqq;
+
+    const out = TMPCHAIN.full("slide", "Ursache");
+
+    document.getElementById("tmp-output").textContent = `
+TMP360 / TMPCHAIN (intern)
+--------------------------------
+zug:        ${out.zug}
+hit:        ${out.hit}
+dump:       ${out.dump}
+lage:       ${out.lage}
+addr:       ${out.addr}
+
+rot360:     ${out.rot360}
+rot8x:      ${out.rot8x}
+rot12x:     ${out.rot12x}
+
+color:      ${out.color}
+percent:    ${out.percent}
+
+QI:         ${out.QI.join(" → ")}
+IQQ:        ${out.IQQ.join(" → ")}
+`;
+}
+
+loadTMP();
 </script>
-</head>
-
-<body>
-
-<h1>IKI1UC – Zentrale Station</h1>
-<h2>Alle Module aktiv – ON3 verlassen – nächste Stationen sichtbar</h2>
-
-<canvas id="canvas" width="600" height="600"></canvas>
-
-<div id="dashboard" class="respo"></div>
-
-<div id="respo100" class="respo"></div>
-<div id="respo360" class="respo"></div>
-
-<div id="next" class="respo"></div>
-
-</body>
-</html>
